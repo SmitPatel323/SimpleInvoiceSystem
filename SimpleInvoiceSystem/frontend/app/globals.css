@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark body {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+/* Remove default button styles */
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Remove default input styles */
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid rgb(59, 130, 246);
+  outline-offset: 2px;
+}
+
+/* Dark mode utilities */
+.dark {
+  @apply bg-slate-950;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  @apply bg-slate-800 text-white border-slate-700;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  @apply border-blue-500 ring-blue-900;
+}
+
+.dark .bg-white {
+  @apply dark:bg-slate-900;
+}
+
+.dark .bg-slate-50 {
+  @apply dark:bg-slate-800;
+}
+
+.dark .bg-slate-100 {
+  @apply dark:bg-slate-700;
+}
+
+.dark .text-slate-900 {
+  @apply dark:text-white;
+}
+
+.dark .text-slate-600 {
+  @apply dark:text-slate-400;
+}
+
+.dark .text-slate-500 {
+  @apply dark:text-slate-500;
+}
+
+.dark .border-slate-200 {
+  @apply dark:border-slate-700;
+}
+
+.dark .border-slate-100 {
+  @apply dark:border-slate-800;
+}
+
+/* Print styles for invoice */
+@media print {
+  body {
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    background: white;
+    padding: 0 !important;
+  }
+
+  .max-w-4xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .py-12 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .dark:bg-slate-900 {
+    background: white !important;
+  }
+
+  .bg-white {
+    background: white !important;
+  }
+
+  .bg-slate-50,
+  .bg-slate-900 {
+    background: white !important;
+  }
+
+  .text-slate-900,
+  .text-white,
+  .dark\:text-white {
+    color: #000 !important;
+  }
+
+  .border {
+    border-color: #000 !important;
+  }
+}
